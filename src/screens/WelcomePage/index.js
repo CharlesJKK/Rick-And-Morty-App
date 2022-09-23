@@ -17,7 +17,7 @@ export default function WelcomePage(){
                 <Text style={{color: 'green', alignSelf: 'center', fontFamily: 'BungeeSpice-Regular', fontSize: 11}}>Aqui você irá encontrar a maioria das informações sobre o seriado.</Text>
             </View>
             <View style={{marginTop: 100}}>
-                <TouchableOpacity style={{borderWidth: 1, borderColor: 'white', borderRadius: 50}} onPress={() => navigation.navigate('HomePage')}>
+                <TouchableOpacity style={{borderWidth: 1, borderColor: 'white', borderRadius: 50}} onPress={() => navigation.navigate('Drawer')}>
                     <View style={{width: 120, height: 30, backgroundColor: '#3CB371', justifyContent: 'center', alignItems: 'center', borderRadius: 50}}>
                         <Text style={{color: 'black',}}>ENTRAR</Text>
                     </View>
