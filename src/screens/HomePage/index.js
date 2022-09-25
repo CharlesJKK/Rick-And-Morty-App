@@ -6,19 +6,6 @@ import Icon from "react-native-vector-icons/Entypo";
 
 export default function HomePage(){
 
-    const [teste, setTeste] = useState()
-
-    const getInfos = async () => {
-        const res = await api.get('/character/1');
-        try{
-            setTeste(res.data)
-        } catch(error){}
-    }
-
-    useEffect(() => {
-        getInfos()
-      }, []);
-
     return(
         <View style={{flex: 1, justifyContent: 'space-evenly', alignItems: 'center', backgroundColor: '#222222'}}>
             
