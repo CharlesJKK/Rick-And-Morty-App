@@ -1,18 +1,18 @@
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import HomePage from "../screens/HomePage";
-import Router from "./Router";
+import FromLocation from "../screens/FromLocation";
 
 const Drawer = createDrawerNavigator();
 
 export default function DrawerNavi(){
     return(
             <Drawer.Navigator 
-            screenOptions={{headerShown: false, drawerPosition: "right",
-             drawerActiveTintColor: '#286d19', drawerActiveBackgroundColor: '#9acf78',
-             drawerStyle:{backgroundColor: '#10afc5', width: '60%'}}}> 
+            screenOptions={{headerShown: false, drawerPosition: "right", unmountOnBlur: true,
+             drawerActiveTintColor: 'purple', drawerActiveBackgroundColor: '#9acf78', drawerInactiveBackgroundColor: 'grey',
+             drawerStyle:{backgroundColor: '#10afc5', width: '60%', opacity: 0.9}}}> 
                 <Drawer.Screen name="Página Inicial" component={HomePage}/>
+                <Drawer.Screen name="FromLocation" component={FromLocation}/>
             </Drawer.Navigator>
     )
 }
