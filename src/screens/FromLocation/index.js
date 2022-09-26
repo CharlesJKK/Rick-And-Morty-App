@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { View, Text, FlatList, Image, ActivityIndicator } from "react-native";
+import { View, Text, FlatList, Image, ImageBackground } from "react-native";
 import api from "../../api/api";
 import FlatlistComponent from "./FlatlistComponent";
 import LoadingFL from "./LoadingFL";
@@ -25,10 +25,12 @@ export default function FromLocation(){
 
     function Header(){
         return(
-            <View style={{justifyContent: 'center', alignItems: 'center'}}>  
-                <Image style={{alignSelf: 'flex-end', maxHeight: '60%', maxWidth: '80%', alignSelf: 'center'}} source={require('../../../assets/button.png')}/>
-                <Text style={{fontSize: 30, alignSelf: 'center'}}>Localidades</Text>
-            </View>
+            <ImageBackground source={require('../../../assets/fundoflatlist.jpg')} style={{maxWidth: '100%', height: 200, justifyContent: 'center', alignItems: 'center'}}>
+                <View style={{backgroundColor: '#fe6fff', borderWidth: 3, borderColor: '#c2063d', borderRadius: 50, opacity: 0.9}}>
+                    <Text style={{fontFamily: 'BungeeSpice-Regular', padding: 5, fontSize: 20, color: 'purple'}}>Localidades</Text>
+                </View>
+                <View style={{borderWidth: 1, borderColor: 'rgba(255, 255, 255, 0.4)', width: '100%', top:78}}></View>
+            </ImageBackground>
         )
     }
 
@@ -46,15 +48,14 @@ export default function FromLocation(){
         isLoading ? 
         <LoadingFL/> 
         :
-        <View style={{flex: 1, backgroundColor: '#222222', justifyContent: 'center', alignItems: 'center'}}>
-            
-            <FlatList
-                numColumns={2}
-                ListHeaderComponent={Header}
-                data={location}
-                keyExtractor={item => item.id}
-                renderItem={renderItem}
-            />
-        </View>
+            <ImageBackground source={require('../../../assets/planets.png')} style={{maxWidth: '100%'}}>
+                <FlatList
+                    numColumns={2}
+                    data={location}
+                    keyExtractor={item => item.id}
+                    renderItem={renderItem}
+                    ListHeaderComponent={Header}
+                />
+            </ImageBackground>
     )
 }
