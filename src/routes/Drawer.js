@@ -12,7 +12,7 @@ export default function DrawerNavi(){
              drawerActiveTintColor: 'purple', drawerActiveBackgroundColor: '#9acf78', drawerInactiveBackgroundColor: 'grey',
              drawerStyle:{backgroundColor: '#10afc5', width: '60%', opacity: 0.9}}}> 
                 <Drawer.Screen name="Página Inicial" component={HomePage}/>
-                <Drawer.Screen name="FromLocation" component={FromLocation}/>
+                <Drawer.Screen name="Locais" component={FromLocation}/>
             </Drawer.Navigator>
     )
 }
