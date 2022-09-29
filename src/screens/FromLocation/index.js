@@ -3,6 +3,7 @@ import { View, Text, FlatList, Image, ImageBackground } from "react-native";
 import api from "../../api/api";
 import FlatlistComponent from "./FlatlistComponent";
 import LoadingFL from "./LoadingFL";
+import ButtonGoBack from "../../components/ButtonGoBack";
 
 export default function FromLocation(){
 
@@ -26,6 +27,9 @@ export default function FromLocation(){
     function Header(){
         return(
             <ImageBackground source={require('../../../assets/fundoflatlist.jpg')} style={{maxWidth: '100%', height: 200, justifyContent: 'center', alignItems: 'center'}}>
+                <View style={{width: '100%', bottom: 80, left: 20}}>
+                    <ButtonGoBack/>
+                </View>
                 <View style={{backgroundColor: '#fe6fff', borderWidth: 3, borderColor: '#c2063d', borderRadius: 50, opacity: 0.9}}>
                     <Text style={{fontFamily: 'BungeeSpice-Regular', padding: 5, fontSize: 20, color: 'purple'}}>Localidades</Text>
                 </View>
