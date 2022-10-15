@@ -13,7 +13,6 @@ export default function Router(){
             <Stack.Navigator initialRouteName="WelcomePage" screenOptions={{headerShown: false}}>
                 <Stack.Screen name="PeoplesPage" component={WhowewherePage}/>
                 <Stack.Screen name="WelcomePage" component={WelcomePage}/>
-                <Stack.Screen name="CharactersPage" component={CharactersPage}/>
                 <Stack.Screen name="Drawer" component={DrawerNavi}/>
             </Stack.Navigator>
     )
