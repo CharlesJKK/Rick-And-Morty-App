@@ -40,11 +40,9 @@ export default function FromLocation(){
 
     const renderItem = ({item}) => (
         <FlatlistComponent
-        id={item.id}
         dimension={item.dimension}
         type={item.type}
         location={item.name}
-        residents={item.residents}
         />
     )
 

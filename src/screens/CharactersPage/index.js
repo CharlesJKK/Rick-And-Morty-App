@@ -4,22 +4,20 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import api from "../../api/api";
 import FlatlistComponent from "./FlatlistComponent";
 
-export default function CharactersPage({route}){
-
-    const { id } = route.params;
+export default function CharactersPage(){
 
     const [characters, setCharacters] = useState()
     const [isLoading, setIsLoading] = useState(true)
 
+    console.log(characters)
+
     const getInfos = async () => {
-        const res = await api.get(`/location/${id}`);
+        const res = await api.get(`/character/[1...183]`);
         try{
-            setCharacters(res?.data.residents)
+            setCharacters(res?.data)
             setTimeout(() => {setIsLoading(false)}, 2000);
         } catch(error){}
     }
-
-    
 
     useEffect(() => {
         getInfos()
@@ -34,7 +32,7 @@ export default function CharactersPage({route}){
     }
 
     const renderItem = ({item}) => (
-        <FlatlistComponent characters={characters}
+        <FlatlistComponent
         />
     )
 
