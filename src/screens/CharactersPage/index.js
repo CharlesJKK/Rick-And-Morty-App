@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { View, Text, FlatList, ImageBackground } from "react-native";
+import { interpolateNode } from "react-native-reanimated";
 import { SafeAreaView } from "react-native-safe-area-context";
 import api from "../../api/api";
 import FlatlistComponent from "./FlatlistComponent";
@@ -12,9 +13,9 @@ export default function CharactersPage(){
     console.log(characters)
 
     const getInfos = async () => {
-        const res = await api.get(`/character/[1...183]`);
+        const res = await api.get(`/character/?page=${1}`);
         try{
-            setCharacters(res?.data)
+            setCharacters(res?.data.results);
             setTimeout(() => {setIsLoading(false)}, 2000);
         } catch(error){}
     }
@@ -33,6 +34,11 @@ export default function CharactersPage(){
 
     const renderItem = ({item}) => (
         <FlatlistComponent
+        name={item.name}
+        gender={item.gender}
+        img={item.image}
+        status={item.status}
+        species={item.species}
         />
     )
 
@@ -43,6 +49,7 @@ export default function CharactersPage(){
                 data={characters}
                 ListHeaderComponent={Header}
                 renderItem={renderItem}
+                keyExtractor={item => item.id}
                 />
             </ImageBackground>
         </SafeAreaView>
