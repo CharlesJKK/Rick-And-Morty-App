@@ -29,17 +29,17 @@ export default function FlatlistComponent({
         }
     }
 
-
+    
     return(
-            <View style={{backgroundColor: 'red', marginTop: 20, marginBottom: 40, width: '80%', alignSelf: 'center', height: 350, justifyContent: 'center', alignItems: 'center', borderRadius: 20}}>
-                <View style={{width: '100%', marginLeft: '50%', marginTop: '5%'}}>
-                    <Image source={{uri: `${img}`}} style={{width: '50%', height: '70%', borderRadius: 100}}/>
+            <View style={{backgroundColor: '#2E8B57', marginTop: 20, marginBottom: 40, width: '80%', alignSelf: 'center', justifyContent: 'center', alignItems: 'center', borderRadius: 20}}>
+                <View style={{width: '100%', marginLeft: '50%', marginTop: '5%', marginBottom: '5%'}}>
+                    <Image source={{uri: `${img}`}} style={{width: '50%', height: 150, borderRadius: 100}}/>
                 </View>
-                <View>
-                    <Text>Nome: {name}</Text>
-                    <Text>Gênero: <Genero/></Text>
-                    <Text>Status: <Status/></Text>
-                    <Text>Espécie: {species}</Text>
+                <View style={{marginTop: '5%', marginBottom: '5%'}}>
+                    <Text style={{fontFamily: 'BungeeSpice-Regular'}}>Nome: {name}</Text>
+                    <Text style={{fontFamily: 'BungeeSpice-Regular'}}>Gênero: <Genero/></Text>
+                    <Text style={{fontFamily: 'BungeeSpice-Regular'}}>Status: <Status/></Text>
+                    <Text style={{fontFamily: 'BungeeSpice-Regular'}}>Espécie: {species}</Text>
                 </View>
             </View>
     )
