@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from "react";
 import { View, Text, FlatList, ImageBackground } from "react-native";
-import { interpolateNode } from "react-native-reanimated";
 import { SafeAreaView } from "react-native-safe-area-context";
 import api from "../../api/api";
 import FlatlistComponent from "./FlatlistComponent";
+import ButtonGoBack from "../../components/ButtonGoBack";
 
 export default function CharactersPage(){
 
@@ -27,6 +27,9 @@ export default function CharactersPage(){
     function Header(){
         return(
             <View style={{alignSelf:'center', marginTop: 60, backgroundColor: 'rgba(0, 0, 0, 0.7)', borderRadius: 20, width: '70%'}}>
+            <View style={{width: '100%', bottom: 80, left: -40}}>
+                <ButtonGoBack/>
+            </View>
                 <Text style={{fontSize: 30, fontFamily: 'BungeeSpice-Regular', color: 'green', alignSelf: 'center'}}>Personagens</Text>
             </View>
         )
