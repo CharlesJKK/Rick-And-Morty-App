@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { View, Text, FlatList, Image, ImageBackground } from "react-native";
+import { View, Text, FlatList, Image, ImageBackground, ActivityIndicator } from "react-native";
 import api from "../../api/api";
 import FlatlistComponent from "./FlatlistComponent";
 import LoadingFL from "../../components/LoadingFL"
@@ -7,15 +7,18 @@ import ButtonGoBack from "../../components/ButtonGoBack";
 
 export default function FromLocation(){
 
-    const [location, setLocation] = useState()
-    const [isLoading, setIsLoading] = useState(true)
+    const [location, setLocation] = useState('');
+    const [isLoading, setIsLoading] = useState(true);
+    const [pagina, setPagina] = useState(1);
 
     const getInfos = async () => {
-        const res = await api.get('/location');
-        try{
-            setLocation(res.data.results)
-            setTimeout(() => {setIsLoading(false)}, 2000);
-        } catch(error){}
+        await api.get(`/location?page=${pagina}`)
+            .then((res) => {
+                const current = res.data.results;
+                setLocation(prev => [...prev, ...current]);
+                setPagina(prev => prev + 1);
+                setTimeout(() => {setIsLoading(false)}, 2000);
+            }).catch(err => console.log(`Opa, erro nisso aqui ${err}`))
     }
 
     useEffect(() => {
@@ -57,6 +60,9 @@ export default function FromLocation(){
                     keyExtractor={item => item.id}
                     renderItem={renderItem}
                     ListHeaderComponent={Header}
+                    onEndReached={getInfos}
+                    onEndReachedThreshold={0.1}
+                    ListFooterComponent={<ActivityIndicator color={'purple'} size={'large'}/>}
                 />
             </ImageBackground>
     )

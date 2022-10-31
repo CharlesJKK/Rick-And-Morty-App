@@ -59,7 +59,7 @@ export default function CharactersPage(){
                 keyExtractor={item => item.id}
                 ListFooterComponent={<ActivityIndicator color={'#2E8B57'} size={'large'}/>}
                 onEndReached={getInfos}
-                onEndReachedThreshold={0.2}
+                onEndReachedThreshold={0.1}
                 />
             </ImageBackground>
         </SafeAreaView>
