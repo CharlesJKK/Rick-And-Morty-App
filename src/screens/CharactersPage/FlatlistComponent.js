@@ -20,9 +20,9 @@ export default function FlatlistComponent({
     }
 
     function Status(){
-        if(gender == 'Alive'){
+        if(status == 'Alive'){
             return <Text>Vivo</Text>
-        }else if(gender == 'Dead'){
+        }else if(status == 'Dead'){
             return <Text>Morto</Text>
         }else{
             return <Text>Desconhecido</Text>
@@ -31,7 +31,7 @@ export default function FlatlistComponent({
 
     
     return(
-            <View style={{backgroundColor: '#2E8B57', marginTop: 20, marginBottom: 40, width: '80%', alignSelf: 'center', justifyContent: 'center', alignItems: 'center', borderRadius: 20}}>
+            <View style={{backgroundColor: '#2E8B57', marginTop: 20, marginBottom: '5%', width: '80%', alignSelf: 'center', justifyContent: 'center', alignItems: 'center', borderRadius: 20}}>
                 <View style={{width: '100%', marginLeft: '50%', marginTop: '5%', marginBottom: '5%'}}>
                     <Image source={{uri: `${img}`}} style={{width: '50%', height: 150, borderRadius: 100}}/>
                 </View>

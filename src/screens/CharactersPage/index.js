@@ -1,23 +1,27 @@
 import React, {useState, useEffect} from "react";
-import { View, Text, FlatList, ImageBackground } from "react-native";
+import { View, Text, FlatList, ImageBackground, ActivityIndicator } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import api from "../../api/api";
 import FlatlistComponent from "./FlatlistComponent";
 import ButtonGoBack from "../../components/ButtonGoBack";
+import LoadingFL from "../../components/LoadingFL";
 
 export default function CharactersPage(){
 
-    const [characters, setCharacters] = useState()
+    const [characters, setCharacters] = useState('')
+    const [pagina, setPagina] = useState(1);
     const [isLoading, setIsLoading] = useState(true)
-
     console.log(characters)
 
+
     const getInfos = async () => {
-        const res = await api.get(`/character/?page=${1}`);
-        try{
-            setCharacters(res?.data.results);
-            setTimeout(() => {setIsLoading(false)}, 2000);
-        } catch(error){}
+        await api.get(`/character/?page=${pagina}`)
+            .then((res) => {
+                const current = res.data.results;
+                setCharacters(prev => [...prev, ...current]);
+                setPagina(prev => prev + 1);
+                setTimeout(() => {setIsLoading(false)}, 2000);
+            }).catch(err => console.log(`Opa, erro nisso aqui ${err}`))
     }
 
     useEffect(() => {
@@ -45,7 +49,7 @@ export default function CharactersPage(){
         />
     )
 
-    return(
+    return(isLoading ? <LoadingFL/> :
         <SafeAreaView>
             <ImageBackground source={require('../../../assets/charactersbackground.png')} style={{maxWidth: '100%', height: '100%'}}>
                 <FlatList
@@ -53,6 +57,9 @@ export default function CharactersPage(){
                 ListHeaderComponent={Header}
                 renderItem={renderItem}
                 keyExtractor={item => item.id}
+                ListFooterComponent={<ActivityIndicator color={'#2E8B57'} size={'large'}/>}
+                onEndReached={getInfos}
+                onEndReachedThreshold={0.2}
                 />
             </ImageBackground>
         </SafeAreaView>

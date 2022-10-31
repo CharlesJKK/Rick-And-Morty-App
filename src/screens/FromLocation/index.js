@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import { View, Text, FlatList, Image, ImageBackground } from "react-native";
 import api from "../../api/api";
 import FlatlistComponent from "./FlatlistComponent";
-import LoadingFL from "./LoadingFL";
+import LoadingFL from "../../components/LoadingFL"
 import ButtonGoBack from "../../components/ButtonGoBack";
 
 export default function FromLocation(){
