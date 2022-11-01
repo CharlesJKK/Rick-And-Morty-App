@@ -3,6 +3,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import HomePage from "../screens/HomePage";
 import FromLocation from "../screens/FromLocation";
 import CharactersPage from "../screens/CharactersPage";
+import EpisodeScreen from "../screens/EpisodesPage";
 
 const Drawer = createDrawerNavigator();
 
@@ -15,6 +16,7 @@ export default function DrawerNavi(){
                 <Drawer.Screen name="Página Inicial" component={HomePage}/>
                 <Drawer.Screen name="Locais" component={FromLocation}/>
                 <Drawer.Screen name="Personagens" component={CharactersPage}/>
+                <Drawer.Screen name="Episódios" component={EpisodeScreen}/>
             </Drawer.Navigator>
     )
 }
