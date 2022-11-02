@@ -4,6 +4,8 @@ import ButtonGoBack from '../../components/ButtonGoBack'
 import api from '../../api/api';
 import FlatlistComponent from './FlatlistComponent';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import Icon from 'react-native-vector-icons/AntDesign';
+import { get } from 'react-native/Libraries/TurboModule/TurboModuleRegistry';
 
 
 
@@ -14,10 +16,8 @@ export default function EpisodeScreen(){
     const [isLoading, setIsLoading] = useState(true);
     const [pagina, setPagina] = useState(1);
 
-    console.log(episodes)
-
     const getInfos = async () => {
-        await api.get(`/episode`)
+        await api.get(`/episode?page=${pagina}`)
             .then((res) => {
                 setEpisodes(res.data.results);
                 setTimeout(() => {setIsLoading(false)}, 2000);
@@ -26,7 +26,19 @@ export default function EpisodeScreen(){
 
     useEffect(() => {
         getInfos()
-      }, []);
+      }, [pagina]);
+
+      function PagePlus(){
+        if(pagina < 3){
+            return setPagina(pagina + 1)
+        }
+      }
+
+      function PageDown(){
+        if(pagina > 1){
+            return setPagina(pagina - 1)
+        }
+      }
 
     function Header(){
         return(
@@ -36,14 +48,14 @@ export default function EpisodeScreen(){
                 </View>
                 <Text style={{color: '#7FFFD4', alignSelf: 'center', fontSize: 30, fontFamily: 'BungeeSpice-Regular', marginTop: '15%'}}>Episódios</Text>
                 <View style={{flexDirection: 'row', alignSelf: 'center'}}>
-                    <TouchableOpacity style={{margin: 30}}>
-                        <Text>clique</Text>
+                    <TouchableOpacity style={{margin: 20}} onPress={() => PageDown()}>
+                        <Icon name='leftsquare' size={30} color='#4B0082'/>
                     </TouchableOpacity>
-                    <Text style={{margin: 30}}>
+                    <Text style={{marginTop:20, fontSize: 20}}>
                         Página {pagina}
                     </Text>
-                    <TouchableOpacity style={{margin: 30}}>
-                        <Text>clique</Text>
+                    <TouchableOpacity style={{margin: 20}} onPress={() => PagePlus()}>
+                        <Icon name='rightsquare' size={30} color='#4B0082'/>
                     </TouchableOpacity>
                 </View>
             </View>
