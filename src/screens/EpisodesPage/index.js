@@ -5,7 +5,7 @@ import api from '../../api/api';
 import FlatlistComponent from './FlatlistComponent';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/AntDesign';
-import { get } from 'react-native/Libraries/TurboModule/TurboModuleRegistry';
+import styles from './style';
 
 
 
@@ -42,19 +42,19 @@ export default function EpisodeScreen(){
 
     function Header(){
         return(
-            <View style={{backgroundColor: '#7B68EE', width: '100%', height: 220, alignSelf: 'center', justifyContent: 'center'}}>
+            <View style={styles.conteinerHeader}>
                 <View style={{position: 'absolute', top: '5%', marginLeft: '5%'}}>
                     <ButtonGoBack/>
                 </View>
-                <Text style={{color: '#7FFFD4', alignSelf: 'center', fontSize: 30, fontFamily: 'BungeeSpice-Regular', marginTop: '15%'}}>Episódios</Text>
-                <View style={{flexDirection: 'row', alignSelf: 'center'}}>
-                    <TouchableOpacity style={{margin: 20}} onPress={() => PageDown()}>
+                <Text style={styles.txtepisodes}>Episódios</Text>
+                <View style={styles.conteinerBotoes}>
+                    <TouchableOpacity style={styles.buttons} onPress={() => PageDown()}>
                         <Icon name='leftsquare' size={30} color='#4B0082'/>
                     </TouchableOpacity>
                     <Text style={{marginTop:20, fontSize: 20}}>
                         Página {pagina}
                     </Text>
-                    <TouchableOpacity style={{margin: 20}} onPress={() => PagePlus()}>
+                    <TouchableOpacity style={styles.buttons} onPress={() => PagePlus()}>
                         <Icon name='rightsquare' size={30} color='#4B0082'/>
                     </TouchableOpacity>
                 </View>
@@ -72,7 +72,7 @@ export default function EpisodeScreen(){
     )
 
     return(
-        <SafeAreaView style={{backgroundColor: '#4B0082'}}>
+        <SafeAreaView style={styles.conteiner}>
             <FlatList
             data={episodes}
             ListHeaderComponent={Header}

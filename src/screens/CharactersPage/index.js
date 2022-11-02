@@ -5,6 +5,7 @@ import api from "../../api/api";
 import FlatlistComponent from "./FlatlistComponent";
 import ButtonGoBack from "../../components/ButtonGoBack";
 import LoadingFL from "../../components/LoadingFL";
+import styles from "./style";
 
 export default function CharactersPage(){
 
@@ -30,11 +31,11 @@ export default function CharactersPage(){
 
     function Header(){
         return(
-            <View style={{alignSelf:'center', marginTop: 60, backgroundColor: 'rgba(0, 0, 0, 0.7)', borderRadius: 20, width: '70%'}}>
+            <View style={styles.conteinerHeader}>
             <View style={{width: '100%', bottom: 80, left: -40}}>
                 <ButtonGoBack/>
             </View>
-                <Text style={{fontSize: 30, fontFamily: 'BungeeSpice-Regular', color: 'green', alignSelf: 'center'}}>Personagens</Text>
+                <Text style={styles.txtPersonagens}>Personagens</Text>
             </View>
         )
     }
@@ -51,7 +52,7 @@ export default function CharactersPage(){
 
     return(isLoading ? <LoadingFL/> :
         <SafeAreaView>
-            <ImageBackground source={require('../../../assets/charactersbackground.png')} style={{maxWidth: '100%', height: '100%'}}>
+            <ImageBackground source={require('../../../assets/charactersbackground.png')} style={styles.conteinerImg}>
                 <FlatList
                 data={characters}
                 ListHeaderComponent={Header}
